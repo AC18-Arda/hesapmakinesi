@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HesapMakinesi.Views.ScientificCalculatorPage"
+             Title="Bilimsel">
+
+    <!-- Ana düzen: ekran, hafıza satırı, trigonometri satırı, tuş takımı -->
+    <Grid Padding="8" RowSpacing="4" RowDefinitions="2*,0.7*,0.9*,7*">
+
+        <!-- EKRAN ALANI  -->
+        <VerticalStackLayout Grid.Row="0" VerticalOptions="End" Padding="8,0">
+            <!-- Yazılan ifade, örn. "2 + ( 3 ×" -->
+            <Label x:Name="IfadeLabel" Style="{StaticResource IfadeLabelStili}" />
+            <!-- Büyük sonuç ekranı -->
+            <Label x:Name="EkranLabel" Text="0" Style="{StaticResource EkranLabelStili}" />
+        </VerticalStackLayout>
+
+        <!--  HAFIZA SATIRI  -->
+        <Grid Grid.Row="1" ColumnDefinitions="*,*,*,*,*">
+            <Button Grid.Column="0" Text="MC" CommandParameter="MC" Clicked="OnHafizaClicked" />
+            <Button Grid.Column="1" Text="MR" CommandParameter="MR" Clicked="OnHafizaClicked" />
+            <Button Grid.Column="2" Text="M+" CommandParameter="M+" Clicked="OnHafizaClicked" />
+            <Button Grid.Column="3" Text="M−" CommandParameter="M-" Clicked="OnHafizaClicked" />
+            <Button Grid.Column="4" Text="MS" CommandParameter="MS" Clicked="OnHafizaClicked" />
+        </Grid>
+
+        <!--  TRİGONOMETRİ SATIRI: DEG/RAD + sin cos tan  -->
+        <Grid Grid.Row="2" ColumnDefinitions="*,*,*,*">
+            <Button x:Name="DereceButonu" Grid.Column="0" Text="DEG" Clicked="OnAciModuClicked" />
+            <Button x:Name="SinButonu" Grid.Column="1" Text="sin" CommandParameter="sin" Clicked="OnFonksiyonClicked" />
+            <Button x:Name="CosButonu" Grid.Column="2" Text="cos" CommandParameter="cos" Clicked="OnFonksiyonClicked" />
+            <Button x:Name="TanButonu" Grid.Column="3" Text="tan" CommandParameter="tan" Clicked="OnFonksiyonClicked" />
+        </Grid>
+
+        <!--  TUŞ TAKIMI: 5 sütun x 7 satır  -->
+        <Grid Grid.Row="3" ColumnDefinitions="*,*,*,*,*" RowDefinitions="*,*,*,*,*,*,*">
+
+            <!-- Satır 0: 2nd  π  e  C  ⌫ -->
+            <Button x:Name="IkinciButonu" Grid.Row="0" Grid.Column="0" Text="2nd" Clicked="OnIkinciClicked" />
+            <Button Grid.Row="0" Grid.Column="1" Text="π" CommandParameter="pi" Clicked="OnFonksiyonClicked" />
+            <Button Grid.Row="0" Grid.Column="2" Text="e" CommandParameter="e" Clicked="OnFonksiyonClicked" />
+            <Button Grid.Row="0" Grid.Column="3" Text="C" Clicked="OnTemizleClicked" />
+            <Button Grid.Row="0" Grid.Column="4" Text="⌫" Clicked="OnGeriClicked" />
+
+            <!-- Satır 1: x²  1/x  |x|  exp  mod -->
+            <Button x:Name="KareButonu" Grid.Row="1" Grid.Column="0" Text="x²" CommandParameter="kare" Clicked="OnFonksiyonClicked" />
+            <Button Grid.Row="1" Grid.Column="1" Text="1/x" CommandParameter="ters" Clicked="OnFonksiyonClicked" />
+            <Button Grid.Row="1" Grid.Column="2" Text="|x|" CommandParameter="mutlak" Clicked="OnFonksiyonClicked" />
+            <Button Grid.Row="1" Grid.Column="3" Text="exp" CommandParameter="×10^" Clicked="OnIslemClicked" />
+            <Button Grid.Row="1" Grid.Column="4" Text="mod" CommandParameter="mod" Clicked="OnIslemClicked" />
+
+            <!-- Satır 2: √x  (  )  n!  ÷ -->
+            <Button x:Name="KarekokButonu" Grid.Row="2" Grid.Column="0" Text="√x" CommandParameter="karekok" Clicked="OnFonksiyonClicked" />
+            <Button Grid.Row="2" Grid.Column="1" Text="(" Clicked="OnParantezAcClicked" />
+            <Button Grid.Row="2" Grid.Column="2" Text=")" Clicked="OnParantezKapatClicked" />
+            <Button Grid.Row="2" Grid.Column="3" Text="n!" CommandParameter="faktoriyel" Clicked="OnFonksiyonClicked" />
+            <Button Grid.Row="2" Grid.Column="4" Text="÷" CommandParameter="÷" Style="{StaticResource IslemButonStili}" Clicked="OnIslemClicked" />
+
+            <!-- Satır 3: x^y  7  8  9  × -->
+            <Button Grid.Row="3" Grid.Column="0" Text="x^y" CommandParameter="^" Clicked="OnIslemClicked" />
+            <Button Grid.Row="3" Grid.Column="1" Text="7" Style="{StaticResource RakamButonStili}" Clicked="OnRakamClicked" />
+            <Button Grid.Row="3" Grid.Column="2" Text="8" Style="{StaticResource RakamButonStili}" Clicked="OnRakamClicked" />
+            <Button Grid.Row="3" Grid.Column="3" Text="9" Style="{StaticResource RakamButonStili}" Clicked="OnRakamClicked" />
+            <Button Grid.Row="3" Grid.Column="4" Text="×" CommandParameter="×" Style="{StaticResource IslemButonStili}" Clicked="OnIslemClicked" />
+
+            <!-- Satır 4: 10^x  4  5  6  − -->
+            <Button x:Name="OnUzeriButonu" Grid.Row="4" Grid.Column="0" Text="10^x" CommandParameter="onUzeri" Clicked="OnFonksiyonClicked" />
+            <Button Grid.Row="4" Grid.Column="1" Text="4" Style="{StaticResource RakamButonStili}" Clicked="OnRakamClicked" />
+            <Button Grid.Row="4" Grid.Column="2" Text="5" Style="{StaticResource RakamButonStili}" Clicked="OnRakamClicked" />
+            <Button Grid.Row="4" Grid.Column="3" Text="6" Style="{StaticResource RakamButonStili}" Clicked="OnRakamClicked" />
+            <Button Grid.Row="4" Grid.Column="4" Text="−" CommandParameter="-" Style="{StaticResource IslemButonStili}" Clicked="OnIslemClicked" />
+
+            <!-- Satır 5: log  1  2  3  + -->
+            <Button Grid.Row="5" Grid.Column="0" Text="log" CommandParameter="log" Clicked="OnFonksiyonClicked" />
+            <Button Grid.Row="5" Grid.Column="1" Text="1" Style="{StaticResource RakamButonStili}" Clicked="OnRakamClicked" />
+            <Button Grid.Row="5" Grid.Column="2" Text="2" Style="{StaticResource RakamButonStili}" Clicked="OnRakamClicked" />
+            <Button Grid.Row="5" Grid.Column="3" Text="3" Style="{StaticResource RakamButonStili}" Clicked="OnRakamClicked" />
+            <Button Grid.Row="5" Grid.Column="4" Text="+" CommandParameter="+" Style="{StaticResource IslemButonStili}" Clicked="OnIslemClicked" />
+
+            <!-- Satır 6: ln  ±  0  ,  = -->
+            <Button x:Name="LnButonu" Grid.Row="6" Grid.Column="0" Text="ln" CommandParameter="ln" Clicked="OnFonksiyonClicked" />
+            <Button Grid.Row="6" Grid.Column="1" Text="±" CommandParameter="isaret" Style="{StaticResource RakamButonStili}" Clicked="OnFonksiyonClicked" />
+            <Button Grid.Row="6" Grid.Column="2" Text="0" Style="{StaticResource RakamButonStili}" Clicked="OnRakamClicked" />
+            <Button Grid.Row="6" Grid.Column="3" Text="," Style="{StaticResource RakamButonStili}" Clicked="OnVirgulClicked" />
+            <Button Grid.Row="6" Grid.Column="4" Text="=" Style="{StaticResource EsittirButonStili}" Clicked="OnEsittirClicked" />
+        </Grid>
+    </Grid>
+</ContentPage>

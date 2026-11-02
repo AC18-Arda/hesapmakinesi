@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- AÇIK TEMA RENK PALETİ -->
+    <!-- Sayfa arka planı -->
+    <Color x:Key="ArkaPlanAcik">#F3F3F3</Color>
+    <!-- Shell üst çubuğu ve yan menü (flyout) yüzeyi -->
+    <Color x:Key="YuzeyAcik">#E9E9E9</Color>
+    <!-- Ayarlar sayfasındaki kart arka planı -->
+    <Color x:Key="KartAcik">#FFFFFF</Color>
+    <!-- Ana yazı rengi -->
+    <Color x:Key="MetinAcik">#1B1B1B</Color>
+    <!-- Soluk (ikincil) yazı rengi: işlem satırı, açıklamalar -->
+    <Color x:Key="SolukMetinAcik">#5F5F5F</Color>
+    <!-- Rakam butonu arka planı -->
+    <Color x:Key="RakamButonAcik">#FFFFFF</Color>
+    <!-- Fonksiyon / hafıza butonu arka planı (örtük stil) -->
+    <Color x:Key="FonksiyonButonAcik">#E6E6E6</Color>
+    <!-- Dört işlem butonu arka planı -->
+    <Color x:Key="IslemButonAcik">#D8E4F4</Color>
+    <!-- Eşittir butonu (vurgu rengi) ve üzerindeki yazı -->
+    <Color x:Key="EsittirButonAcik">#0067C0</Color>
+    <Color x:Key="EsittirMetinAcik">#FFFFFF</Color>
+    <!-- Yan menüde seçili öğenin arka planı -->
+    <Color x:Key="SecimArkaPlanAcik">#D6D6D6</Color>
+
+    <!--  KOYU  TEMA RENK PALETİ -->
+    <Color x:Key="ArkaPlanKoyu">#202020</Color>
+    <Color x:Key="YuzeyKoyu">#2B2B2B</Color>
+    <Color x:Key="KartKoyu">#2D2D2D</Color>
+    <Color x:Key="MetinKoyu">#FFFFFF</Color>
+    <Color x:Key="SolukMetinKoyu">#B5B5B5</Color>
+    <Color x:Key="RakamButonKoyu">#3B3B3B</Color>
+    <Color x:Key="FonksiyonButonKoyu">#323232</Color>
+    <Color x:Key="IslemButonKoyu">#33404F</Color>
+    <Color x:Key="EsittirButonKoyu">#4CC2FF</Color>
+    <Color x:Key="EsittirMetinKoyu">#000000</Color>
+    <Color x:Key="SecimArkaPlanKoyu">#3D3D3D</Color>
+
+</ResourceDictionary>

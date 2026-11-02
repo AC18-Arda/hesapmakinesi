@@ -1,0 +1,10 @@
+<api type="debug" assembly-name="HesapMakinesi" mvid="03ea9949c3464c0eafe14f9a4d8bd94c">
+  <java-to-managed>
+    <entry java-name="crc6435f69c053f782cbf/MainActivity" managed-name="HesapMakinesi.MainActivity, HesapMakinesi" managed-type-token-id="33554441" />
+    <entry java-name="crc6435f69c053f782cbf/MainApplication" managed-name="HesapMakinesi.MainApplication, HesapMakinesi" managed-type-token-id="33554442" />
+  </java-to-managed>
+  <managed-to-java>
+    <entry java-name="crc6435f69c053f782cbf/MainActivity" managed-name="HesapMakinesi.MainActivity, HesapMakinesi" managed-type-token-id="33554441" />
+    <entry java-name="crc6435f69c053f782cbf/MainApplication" managed-name="HesapMakinesi.MainApplication, HesapMakinesi" managed-type-token-id="33554442" />
+  </managed-to-java>
+</api>

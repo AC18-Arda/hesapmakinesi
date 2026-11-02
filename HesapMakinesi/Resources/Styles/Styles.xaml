@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Renkler Colors.xaml içinde olduğu için burada StaticResource ile okunur.
+         AppThemeBinding sayesinde tema değişince direkt hızlıca güncellenir. -->
+
+    <!--  SAYFA STİLİ -->
+    <Style TargetType="Page" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource ArkaPlanAcik}, Dark={StaticResource ArkaPlanKoyu}}" />
+    </Style>
+
+    <!--  SHELL STİLİ (örtük)  -->
+    <Style TargetType="Shell" ApplyToDerivedTypes="True">
+        <!-- Üst çubuk arka planı -->
+        <Setter Property="Shell.BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource YuzeyAcik}, Dark={StaticResource YuzeyKoyu}}" />
+        <!-- Üst çubuktaki ikon  -->
+        <Setter Property="Shell.ForegroundColor"
+                Value="{AppThemeBinding Light={StaticResource MetinAcik}, Dark={StaticResource MetinKoyu}}" />
+        <!-- Üst çubuktaki başlık rengi -->
+        <Setter Property="Shell.TitleColor"
+                Value="{AppThemeBinding Light={StaticResource MetinAcik}, Dark={StaticResource MetinKoyu}}" />
+        <!-- Yan menü (flyout) arka planı -->
+        <Setter Property="Shell.FlyoutBackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource YuzeyAcik}, Dark={StaticResource YuzeyKoyu}}" />
+        <Setter Property="Shell.NavBarHasShadow" Value="False" />
+    </Style>
+
+    <!-- LABEL STİLLERİ  -->
+    <!-- Ortak (temel) Label stili: yazı rengi ve yazı tipi burada tanımlanır -->
+    <Style x:Key="TemelLabelStili" TargetType="Label">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource MetinAcik}, Dark={StaticResource MetinKoyu}}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+
+    <!-- Örtük Label stili: Style verilmeyen tüm Label'lar buradan beslenir -->
+    <Style TargetType="Label" BasedOn="{StaticResource TemelLabelStili}" />
+
+    <!-- Büyük sonuç ekranı -->
+    <Style x:Key="EkranLabelStili" TargetType="Label" BasedOn="{StaticResource TemelLabelStili}">
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="FontSize" Value="40" />
+        <Setter Property="HorizontalTextAlignment" Value="End" />
+        <Setter Property="LineBreakMode" Value="NoWrap" />
+    </Style>
+
+    <!-- Küçük işlem (ifade) satırı: başı kısaltılır, böylece ifadenin sonu görünür -->
+    <Style x:Key="IfadeLabelStili" TargetType="Label" BasedOn="{StaticResource TemelLabelStili}">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource SolukMetinAcik}, Dark={StaticResource SolukMetinKoyu}}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="HorizontalTextAlignment" Value="End" />
+        <Setter Property="LineBreakMode" Value="HeadTruncation" />
+    </Style>
+
+    <!-- Sayfa başlığı -->
+    <Style x:Key="BaslikLabelStili" TargetType="Label" BasedOn="{StaticResource TemelLabelStili}">
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="FontSize" Value="28" />
+    </Style>
+
+    <!-- Alt başlık -->
+    <Style x:Key="AltBaslikLabelStili" TargetType="Label" BasedOn="{StaticResource TemelLabelStili}">
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <!-- Açıklama metni -->
+    <Style x:Key="AciklamaLabelStili" TargetType="Label" BasedOn="{StaticResource TemelLabelStili}">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource SolukMetinAcik}, Dark={StaticResource SolukMetinKoyu}}" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <!-- Yan menü (flyout) öğe yazısı -->
+    <Style x:Key="MenuEtiketLabelStili" TargetType="Label" BasedOn="{StaticResource TemelLabelStili}">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
+
+    <!-- BUTON KISMI -->
+    <!-- 1) Ortak temel buton stili: tüm butonların paylaştığı özellikler -->
+    <Style x:Key="TemelButonStili" TargetType="Button">
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="MinimumHeightRequest" Value="0" />
+        <Setter Property="MinimumWidthRequest" Value="0" />
+        <!-- Fare üzerine gelince / basılınca görsel geri bildirim (saydamlık değişimi) -->
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="Opacity" Value="1" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="PointerOver">
+                        <VisualState.Setters>
+                            <Setter Property="Opacity" Value="0.85" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <VisualState.Setters>
+                            <Setter Property="Opacity" Value="0.6" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <!-- 2) ÖRTÜK (implicit) buton stili: Style verilmeyen tüm Button'lar (%, CE, C, √x, MC, sin...) -->
+    <Style TargetType="Button" BasedOn="{StaticResource TemelButonStili}">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource FonksiyonButonAcik}, Dark={StaticResource FonksiyonButonKoyu}}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource MetinAcik}, Dark={StaticResource MetinKoyu}}" />
+    </Style>
+
+    <!-- 3) AÇIK (explicit) stil: rakam butonları (x:Key + BasedOn) -->
+    <Style x:Key="RakamButonStili" TargetType="Button" BasedOn="{StaticResource TemelButonStili}">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource RakamButonAcik}, Dark={StaticResource RakamButonKoyu}}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource MetinAcik}, Dark={StaticResource MetinKoyu}}" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="FontSize" Value="22" />
+    </Style>
+
+    <!-- 4) AÇIK (explicit) stil: işlem butonları + - × ÷ (x:Key + BasedOn) -->
+    <Style x:Key="IslemButonStili" TargetType="Button" BasedOn="{StaticResource TemelButonStili}">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource IslemButonAcik}, Dark={StaticResource IslemButonKoyu}}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource MetinAcik}, Dark={StaticResource MetinKoyu}}" />
+        <Setter Property="FontSize" Value="22" />
+    </Style>
+
+    <!-- 5) AÇIK (explicit) stil: eşittir butonu (x:Key + BasedOn) -->
+    <Style x:Key="EsittirButonStili" TargetType="Button" BasedOn="{StaticResource TemelButonStili}">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource EsittirButonAcik}, Dark={StaticResource EsittirButonKoyu}}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource EsittirMetinAcik}, Dark={StaticResource EsittirMetinKoyu}}" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="FontSize" Value="24" />
+    </Style>
+
+    <!-- RADIOBUTTON STİLİ Ayarlar sayfası -->
+    <Style TargetType="RadioButton">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource MetinAcik}, Dark={StaticResource MetinKoyu}}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+    </Style>
+
+    <!-- KART (Border) STİLİ  -->
+    <Style x:Key="KartStili" TargetType="Border">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource KartAcik}, Dark={StaticResource KartKoyu}}" />
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="Padding" Value="16" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 8,8,8,8" />
+    </Style>
+
+</ResourceDictionary>

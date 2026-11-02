@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HesapMakinesi.Views.SettingsPage"
+             Title="Ayarlar">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
+
+            <!-- Sayfa başlığı -->
+            <Label Text="Ayarlar" Style="{StaticResource BaslikLabelStili}" />
+
+            <!-- Bölüm başlığı ve açıklama -->
+            <Label Text="Uygulama teması" Style="{StaticResource AltBaslikLabelStili}" />
+            <Label Text="Uygulamanın hangi renk temasıyla görüneceğini seçin. Değişiklik anında tüm sayfalara uygulanır."
+                   Style="{StaticResource AciklamaLabelStili}" />
+
+            <!-- Tema seçenekleri kartı: aynı GroupName'e sahip RadioButton'lardan yalnızca biri seçilebilir -->
+            <Border Style="{StaticResource KartStili}">
+                <VerticalStackLayout Spacing="4">
+                    <RadioButton x:Name="AcikTemaRadio" GroupName="Tema" Content="Açık (Light)"
+                                 Value="Light" CheckedChanged="OnTemaDegisti" />
+                    <RadioButton x:Name="KoyuTemaRadio" GroupName="Tema" Content="Koyu (Dark)"
+                                 Value="Dark" CheckedChanged="OnTemaDegisti" />
+                    <RadioButton x:Name="SistemTemaRadio" GroupName="Tema" Content="Sistem ayarını kullan (Use system setting)"
+                                 Value="System" CheckedChanged="OnTemaDegisti" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Seçilen temanın bilgisi -->
+            <Label x:Name="DurumLabel" Style="{StaticResource AciklamaLabelStili}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="HesapMakinesi.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:HesapMakinesi.Views"
+    FlyoutBehavior="Flyout"
+    Title="Hesap Makinesi">
+
+    <!-- Yan menü öğelerinin görünümü. Renkler stil dosyasından gelir, sabit renk yok. -->
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid Padding="16,0" HeightRequest="48">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <!-- Normal durumda arka plan saydam -->
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <!-- Seçili sayfanın menü öğesi vurgulanır -->
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor"
+                                            Value="{AppThemeBinding Light={StaticResource SecimArkaPlanAcik}, Dark={StaticResource SecimArkaPlanKoyu}}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+                <!-- BindingContext FlyoutItem'dır; Title özelliği menü yazısını verir -->
+                <Label Text="{Binding Title}" Style="{StaticResource MenuEtiketLabelStili}" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <!-- MENÜ ÖĞESİ 1: Standart hesap makinesi -->
+    <FlyoutItem Title="Standart" Route="StandardCalculatorPage">
+        <ShellContent ContentTemplate="{DataTemplate views:StandardCalculatorPage}" />
+    </FlyoutItem>
+
+    <!-- MENÜ ÖĞESİ 2: Bilimsel hesap makinesi -->
+    <FlyoutItem Title="Bilimsel" Route="ScientificCalculatorPage">
+        <ShellContent ContentTemplate="{DataTemplate views:ScientificCalculatorPage}" />
+    </FlyoutItem>
+
+    <!-- MENÜ ÖĞESİ 3: Ayarlar -->
+    <FlyoutItem Title="Ayarlar" Route="SettingsPage">
+        <ShellContent ContentTemplate="{DataTemplate views:SettingsPage}" />
+    </FlyoutItem>
+
+</Shell>
